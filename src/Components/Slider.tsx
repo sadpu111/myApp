@@ -255,7 +255,7 @@ export const thumbTitleVariants = {
 };
 export const offset = 6;
 export function MovieSlider({ status }: { status: MovieStatus }) {
-  const bigMovieMatch = useMatch(`/movies/${status}/:movieId`);
+  const bigMovieMatch = useMatch(`/myApp/movies/${status}/:movieId`);
   const { data, } = useQuery<IGetMoviesResult>(["movies", status], () => getMovies(status));
   const { data: detailData, } = useQuery<IGetMovieDetails>(["movieDetails", bigMovieMatch?.params.movieId], () => getMovieDetails(bigMovieMatch?.params.movieId));
   const { data: creditData, } = useQuery<IGetMovieCredit>(["movieCredit", bigMovieMatch?.params.movieId], () => getMovieCredit(bigMovieMatch?.params.movieId));
@@ -270,7 +270,7 @@ export function MovieSlider({ status }: { status: MovieStatus }) {
   const [leaving, setLeaving] = useState(false);
   const toggleLeaving = () => setLeaving((prev) => !prev);
   const onBoxClicked = ({ movieId, status, }: { movieId: number; status: string; }) => {
-    navigate(`/movies/${status}/${movieId}`);
+    navigate(`/myApp/movies/${status}/${movieId}`);
   };
   const width = window.innerWidth;
   const increseIndex = () => {
@@ -432,7 +432,7 @@ export function MovieSlider({ status }: { status: MovieStatus }) {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 export function TvShowSlider({ status }: { status: TvShowStatus }) {
-  const bigTvShowMatch = useMatch(`/tvShows/${status}/:tvShowId`);
+  const bigTvShowMatch = useMatch(`/myApp/tvShows/${status}/:tvShowId`);
   const { data, } = useQuery<IGetTvShowsResult>(["tvShows", status], () => getTvShows(status));
   const { data: tvShowDetailData, } = useQuery<IGetTvShowDetails>(["tvShowDetails", bigTvShowMatch?.params.tvShowId], () => getTvShowDetails(bigTvShowMatch?.params.tvShowId));
   const { data: tvShowCreditData, } = useQuery<IGetTvShowCredit>(["tvShowCredit", bigTvShowMatch?.params.tvShowId], () => getTvShowCredit(bigTvShowMatch?.params.tvShowId));
@@ -447,7 +447,7 @@ export function TvShowSlider({ status }: { status: TvShowStatus }) {
   const [leaving, setLeaving] = useState(false);
   const toggleLeaving = () => setLeaving((prev) => !prev);
   const onBoxClicked = ({ tvShowId, status, }: { tvShowId: number; status: string; }) => {
-    navigate(`/tvShows/${status}/${tvShowId}`);
+    navigate(`/myApp/tvShows/${status}/${tvShowId}`);
   };
   const width = window.innerWidth;
   const increseIndex = () => {

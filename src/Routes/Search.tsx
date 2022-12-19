@@ -44,7 +44,7 @@ function Search() {
   const keyword = srcParams.get("keyword");
   const navigate = useNavigate();
   const onValid = (data: IForm) => {
-    navigate(`/search?keyword=${data.keyword}`);
+    navigate(`/myApp/search?keyword=${data.keyword}`);
   };
 
   return (

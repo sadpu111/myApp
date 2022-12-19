@@ -1,5 +1,5 @@
 const API_KEY = "833228a23373ddc804c04843b6c4434a";
-const BASE_URL = "https://api.themoviedb.org/3/"
+const BASE_URL = "https://api.themoviedb.org/3"
 
 export interface IGetMoviesResult {
   page: number;

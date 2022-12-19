@@ -25,14 +25,14 @@ const Type = styled.h1`
 
 
 export function MovieSearchResults({ keyword }: { keyword: string }) {
-  const bigMovieMatch = useMatch(`/search/movie/:movieId`);
+  const bigMovieMatch = useMatch(`/myApp/search/movie/:movieId`);
   const { data } = useQuery<IGetSearchResult>(["search", keyword], () => getSearchResult(keyword));
   const { data: detailData, } = useQuery<IGetMovieDetails>(["tvShowDetails", bigMovieMatch?.params.movieId], () => getMovieDetails(bigMovieMatch?.params.movieId));
   const { data: creditData, } = useQuery<IGetMovieCredit>(["tvShowCredit", bigMovieMatch?.params.movieId], () => getMovieCredit(bigMovieMatch?.params.movieId));
   const movieResults = data?.results.filter(result => result.media_type === "movie");
   const navigate = useNavigate();
   const onBoxClicked = (type: string, movieId: number) => {
-    navigate(`/search/${type}/${movieId}?keyword=${keyword}`);
+    navigate(`/myApp/search/${type}/${movieId}?keyword=${keyword}`);
   };
   const onOverlayClick = () => {
     navigate(-1);
@@ -128,7 +128,7 @@ export function MovieSearchResults({ keyword }: { keyword: string }) {
 
 export function TvShowSearchResults({ keyword }: { keyword: string }) {
 
-  const bigTvShowMatch = useMatch(`/search/tv/:tvShowId`);
+  const bigTvShowMatch = useMatch(`/myApp/search/tv/:tvShowId`);
   const { data, } = useQuery<IGetSearchResult>(["tvShows", keyword], () => getSearchResult(keyword));
   const { data: tvShowDetailData, } = useQuery<IGetTvShowDetails>(["tvShowDetails", bigTvShowMatch?.params.tvShowId], () => getTvShowDetails(bigTvShowMatch?.params.tvShowId));
   const { data: tvShowCreditData, } = useQuery<IGetTvShowCredit>(["tvShowCredit", bigTvShowMatch?.params.tvShowId], () => getTvShowCredit(bigTvShowMatch?.params.tvShowId));
@@ -141,7 +141,7 @@ export function TvShowSearchResults({ keyword }: { keyword: string }) {
   const clickedTvShow = bigTvShowMatch?.params.tvShowId && data?.results.find((tvShow) => tvShow.id + "" === bigTvShowMatch?.params.tvShowId);
   const { scrollY } = useScroll();
   const onBoxClicked = (type: string, tvShowId: number) => {
-    navigate(`/search/${type}/${tvShowId}?keyword=${keyword}`);
+    navigate(`/myApp/search/${type}/${tvShowId}?keyword=${keyword}`);
   };
 
   return (

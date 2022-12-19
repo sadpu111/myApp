@@ -114,8 +114,8 @@ export interface IForm {
   extraError?: string;
 };
 function Header() {
-  const homeMatch = useMatch("/");
-  const tVShowMatch = useMatch("/tvShows");
+  const homeMatch = useMatch("/myApp/");
+  const tVShowMatch = useMatch("/myApp/tvShows");
   const [searchOpen, setSearchOpen] = useRecoilState(searchState);
   const inputAnimation = useAnimation(); // 특정 코드를 통해 애니메이션 실행
   const iconAnimation = useAnimation();
@@ -147,7 +147,7 @@ function Header() {
   const { register, handleSubmit, } = useForm<IForm>();
   const navigate = useNavigate();
   const onValid = (data: IForm) => {
-    navigate(`/search?keyword=${data.keyword}`);
+    navigate(`/myApp/search?keyword=${data.keyword}`);
     setSearchOpen(false);
   };
   return (
@@ -172,13 +172,13 @@ function Header() {
         </Logo>
         <Pages>
           <Page>
-            <Link to="/">
+            <Link to="/myApp/">
               Movie
             </Link>
             {homeMatch && <Circle layoutId="cirlce" />}
           </Page>
           <Page>
-            <Link to="tvShows">
+            <Link to="/myApp/tvShows">
               TV Show
             </Link>
             {tVShowMatch && <Circle layoutId="cirlce" />}
